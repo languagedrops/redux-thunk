@@ -1,4 +1,4 @@
-import {Middleware, Dispatch} from "redux";
+import { Middleware, Dispatch } from "redux";
 
 
 export type ThunkAction<R, S> = (getState: () => S, dispatch: Dispatch<S>) => R;
@@ -11,4 +11,5 @@ declare module "redux" {
 }
 
 
-export const enhancedThunk: Middleware
+const enhancedThunk: Middleware
+export default enhancedThunk
