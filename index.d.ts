@@ -1,7 +1,7 @@
 import {Middleware, Dispatch} from "redux";
 
 
-export type ThunkAction<R, S> = (dispatch: Dispatch<S>, getState: () => S) => R;
+export type ThunkAction<R, S> = (getState: () => S, dispatch: Dispatch<S>) => R;
 
 declare module "redux" {
   export interface Dispatch<S>
