@@ -1,14 +1,14 @@
-function createThunkMiddleware(extraArgument) {
-  return ({ dispatch, getState }) => next => action => {
-    if (typeof action === 'function') {
-      return action(dispatch, getState, extraArgument);
+export const enhancedThunk = ({ dispatch, getState }) => (next) => (action) => {
+  if (typeof action === 'function') {
+    const returnValue = action(dispatch, getState)
+    if (returnValue && returnValue.type && typeof returnValue.type === 'string') {
+      dispatch(returnValue)
+    } else if (returnValue && Array.isArray(returnValue)) {
+      returnValue.forEach(dispatch)
+    } else {
+      return returnValue
     }
+  }
 
-    return next(action);
-  };
+  return next(action)
 }
-
-const thunk = createThunkMiddleware();
-thunk.withExtraArgument = createThunkMiddleware;
-
-export default thunk;
