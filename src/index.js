@@ -1,4 +1,4 @@
-export const enhancedThunk = ({ dispatch, getState }) => (next) => (action) => {
+const enhancedThunk = ({ dispatch, getState }) => (next) => (action) => {
   if (typeof action === 'function') {
     const returnValue = action(getState, dispatch)
     if (returnValue && returnValue.type && typeof returnValue.type === 'string') {
@@ -12,3 +12,4 @@ export const enhancedThunk = ({ dispatch, getState }) => (next) => (action) => {
 
   return next(action)
 }
+export default enhancedThunk
