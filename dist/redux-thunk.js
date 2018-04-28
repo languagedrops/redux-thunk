@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    } else if (returnValue && returnValue.type && typeof returnValue.type === 'string') {
 	      return dispatch(returnValue);
-	    } else if (returnValue && typeof returnValue.type === 'function') {
+	    } else if (returnValue && typeof returnValue === 'function') {
 	      return processAction(dispatch, getState, next, returnValue);
 	    } else {
 	      return returnValue;
